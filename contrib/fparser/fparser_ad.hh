@@ -121,8 +121,11 @@ private:
   /// the function index of the plog function
   unsigned mFPlog;
 
-  // user function plog
+  // user function plog and derivatives
   static Value_t fp_plog(const Value_t * params);
+  static Value_t fp_d1plog(const Value_t * params);
+  static Value_t fp_d2plog(const Value_t * params);
+  static Value_t fp_d3plog(const Value_t * params);
 
   // Exceptions
   class UnsupportedOpcode : public std::exception {

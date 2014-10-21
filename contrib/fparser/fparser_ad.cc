@@ -27,6 +27,9 @@ FunctionParserADBase<Value_t>::FunctionParserADBase() :
     mFPlog(mData->mFuncPtrs.size())
 {
   this->AddFunction("plog", fp_plog, 2);
+  this->AddFunction("d1plog", fp_d1plog, 2);
+  this->AddFunction("d2plog", fp_d2plog, 2);
+  this->AddFunction("d3plog", fp_d3plog, 2);
 }
 
 template<typename Value_t>
@@ -42,12 +45,31 @@ FunctionParserADBase<Value_t>::FunctionParserADBase(const FunctionParserADBase& 
 template<typename Value_t>
 Value_t FunctionParserADBase<Value_t>::fp_plog(const Value_t * params)
 {
-  const Value_t x = params[0];
-  const Value_t a = params[1];
-  // return x < a ? fp_log(a) + (params[0] - a) / a : fp_log(params[0]);
-  // return x < a ? fp_log(a) - Value_t(1.5) + Value_t(2.0)/a * x - Value_t(0.5)/(a*a) * x*x : fp_log(x);
+  const Value_t x = params[0], a = params[1];
   return x < a ? fp_log(a) + (x-a)/a - (x-a)*(x-a)/(Value_t(2)*a*a) + (x-a)*(x-a)*(x-a)/(Value_t(3)*a*a*a) : fp_log(x);
 }
+
+template<typename Value_t>
+Value_t FunctionParserADBase<Value_t>::fp_d1plog(const Value_t * params)
+{
+  const Value_t x = params[0], a = params[1];
+  return x < a ? (a*a + a*(a-x) + (a-x)*(a-x))/(a*a*a) : Value_t(1)/x;
+}
+
+template<typename Value_t>
+Value_t FunctionParserADBase<Value_t>::fp_d2plog(const Value_t * params)
+{
+  const Value_t x = params[0], a = params[1];
+  return x < a ? (Value_t(2)*x - Value_t(3)*a)/(a*a*a) : Value_t(-1)/(x*x);
+}
+
+template<typename Value_t>
+Value_t FunctionParserADBase<Value_t>::fp_d3plog(const Value_t * params)
+{
+  const Value_t x = params[0], a = params[1];
+  return x < a ? Value_t(2)/(a*a*a) : Value_t(2)/(x*x*x);
+}
+
 
 template<typename Value_t>
 int FunctionParserADBase<Value_t>::OpcodeSize(const OpcodePacket & p)
@@ -461,80 +483,18 @@ FunctionParserADBase<Value_t>::DiffFunction(const DiffProgramFragment & orig)
       return outer;
 
     case cFCall:
-      if (findex == mFPlog)
+      if (findex >= mFPlog && findex < mFPlog + 3)
       {
-        // we assume that the second argument to plog is constant for now (TODO?).
-        /*
-        prog_da = DiffFunction(prog_a);
         // da (inner derivative)
-        outer = prog_da;
-        // 1/a
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.push_back(OpcodePlain(cInv));
-        // a>b
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cGreater));
-        // *
+        outer = DiffFunction(prog_a);
+        outer.push_back(OpcodeFCall(findex + 1));
         outer.push_back(OpcodePlain(cMul));
-        // 1/b
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cInv));
-        // a<=b
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cLessOrEq));
-        // *
-        outer.push_back(OpcodePlain(cMul));
-        // +
-        outer.push_back(OpcodePlain(cAdd));
-        // multiply by inner derivative da
-        outer.push_back(OpcodePlain(cMul));
-        */
-
-        /*
-        // x<e ? (2/e - 1/(e*e)*x) : 1/x
-        prog_da = DiffFunction(prog_a);
+        return outer;
+      }
+      if (findex == mFPlog + 3)
+      {
         // da (inner derivative)
-        outer = prog_da;
-        // 1/a
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.push_back(OpcodePlain(cInv));
-        // a>b
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cGreater));
-        // *
-        outer.push_back(OpcodePlain(cMul));
-        // 2/b
-        outer.push_back(OpcodeImmediate(Value_t(2)));
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cDiv));
-        /// 1/(e*e) = e^-2
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodeImmediate(Value_t(-2)));
-        outer.push_back(OpcodePlain(cPow));
-        // * x
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.push_back(OpcodePlain(cMul));
-        // -
-        outer.push_back(OpcodePlain(cSub));
-        // a<=b
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cLessOrEq));
-        // *
-        outer.push_back(OpcodePlain(cMul));
-        // +
-        outer.push_back(OpcodePlain(cAdd));
-        // multiply by inner derivative da
-        outer.push_back(OpcodePlain(cMul));
-        */
-
-        // x<e ? (1/e - 1/(e*e)*(x-e) + 1/e^3*(x-e)^2) : 1/x
-        prog_da = DiffFunction(prog_a);
-        // da (inner derivative)
-        outer = prog_da;
+        outer = DiffFunction(prog_a);
         // 1/a
         outer.insert(outer.end(), prog_a.begin(), prog_a.end());
         // actually do 1/(a + (a==0)). This avoids a 1/0 and a=0 should always make this the false-branch!
@@ -550,42 +510,7 @@ FunctionParserADBase<Value_t>::DiffFunction(const DiffProgramFragment & orig)
         outer.push_back(OpcodePlain(cGreater));
         // *
         outer.push_back(OpcodePlain(cMul));
-        // 1/b
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cInv));
-        /// 1/(b*b) = b^-2
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodeImmediate(Value_t(-2)));
-        outer.push_back(OpcodePlain(cPow));
-        // * (a-b)
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cSub));
-        outer.push_back(OpcodePlain(cMul));
-        // -
-        outer.push_back(OpcodePlain(cSub));
-        // 1/(e*e*e) = e^-3
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodeImmediate(Value_t(-3)));
-        outer.push_back(OpcodePlain(cPow));
-        // * (x-e)^2
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cSub));
-        outer.push_back(OpcodeImmediate(Value_t(2)));
-        outer.push_back(OpcodePlain(cPow));
-        outer.push_back(OpcodePlain(cMul));
-        // +
-        outer.push_back(OpcodePlain(cAdd));
-        // a<=b
-        outer.insert(outer.end(), prog_a.begin(), prog_a.end());
-        outer.insert(outer.end(), prog_b.begin(), prog_b.end());
-        outer.push_back(OpcodePlain(cLessOrEq));
-        // *
-        outer.push_back(OpcodePlain(cMul));
-        // +
-        outer.push_back(OpcodePlain(cAdd));
-        // multiply by inner derivative da
+        // * inner derivative
         outer.push_back(OpcodePlain(cMul));
 
         return outer;
