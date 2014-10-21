@@ -419,7 +419,6 @@ am_util_tree_grammar_parser_OBJECTS =  \
 	util/util_tree_grammar_parser-tree_grammar_parser.$(OBJEXT) \
 	fpoptimizer/util_tree_grammar_parser-opcodename.$(OBJEXT) \
 	util_tree_grammar_parser-fparser.$(OBJEXT) \
-	util_tree_grammar_parser-fparser_ad.$(OBJEXT) \
 	lib/util_tree_grammar_parser-sha1.$(OBJEXT)
 util_tree_grammar_parser_OBJECTS =  \
 	$(am_util_tree_grammar_parser_OBJECTS)
@@ -954,8 +953,6 @@ util_tree_grammar_parser_SOURCES = \
                                  fparser_mpfr.hh \
                                  fparser.hh \
 			 	 fparser.cc \
-                                 fparser_ad.hh \
-			 	 fparser_ad.cc \
                                  fpoptimizer/logic_comparisons.hh \
                                  fpoptimizer/constantfolding.hh \
                                  fpoptimizer/logic_ifoperations.hh \
@@ -1383,7 +1380,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_la-fparser_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libprof_la-fpoptimizer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util_tree_grammar_parser-fparser.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/util_tree_grammar_parser-fparser_ad.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-bytecodesynth.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-codetree.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-constantfolding.Plo@am__quote@
@@ -2403,20 +2399,6 @@ util_tree_grammar_parser-fparser.obj: fparser.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser.cc' object='util_tree_grammar_parser-fparser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -c -o util_tree_grammar_parser-fparser.obj `if test -f 'fparser.cc'; then $(CYGPATH_W) 'fparser.cc'; else $(CYGPATH_W) '$(srcdir)/fparser.cc'; fi`
-
-util_tree_grammar_parser-fparser_ad.o: fparser_ad.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -MT util_tree_grammar_parser-fparser_ad.o -MD -MP -MF $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Tpo -c -o util_tree_grammar_parser-fparser_ad.o `test -f 'fparser_ad.cc' || echo '$(srcdir)/'`fparser_ad.cc
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Tpo $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser_ad.cc' object='util_tree_grammar_parser-fparser_ad.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -c -o util_tree_grammar_parser-fparser_ad.o `test -f 'fparser_ad.cc' || echo '$(srcdir)/'`fparser_ad.cc
-
-util_tree_grammar_parser-fparser_ad.obj: fparser_ad.cc
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -MT util_tree_grammar_parser-fparser_ad.obj -MD -MP -MF $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Tpo -c -o util_tree_grammar_parser-fparser_ad.obj `if test -f 'fparser_ad.cc'; then $(CYGPATH_W) 'fparser_ad.cc'; else $(CYGPATH_W) '$(srcdir)/fparser_ad.cc'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Tpo $(DEPDIR)/util_tree_grammar_parser-fparser_ad.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fparser_ad.cc' object='util_tree_grammar_parser-fparser_ad.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -c -o util_tree_grammar_parser-fparser_ad.obj `if test -f 'fparser_ad.cc'; then $(CYGPATH_W) 'fparser_ad.cc'; else $(CYGPATH_W) '$(srcdir)/fparser_ad.cc'; fi`
 
 lib/util_tree_grammar_parser-sha1.o: lib/sha1.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(util_tree_grammar_parser_CXXFLAGS) $(CXXFLAGS) -MT lib/util_tree_grammar_parser-sha1.o -MD -MP -MF lib/$(DEPDIR)/util_tree_grammar_parser-sha1.Tpo -c -o lib/util_tree_grammar_parser-sha1.o `test -f 'lib/sha1.cpp' || echo '$(srcdir)/'`lib/sha1.cpp
