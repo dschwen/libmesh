@@ -240,8 +240,8 @@ void Partitioner::partition_unpartitioned_elements (MeshBase &mesh,
       const dof_id_type global_index =
         global_indices[cnt++];
 
-      libmesh_assert_less (global_index, subdomain_bounds.back());
       libmesh_assert_less (global_index, n_unpartitioned_elements);
+      libmesh_assert_less (global_index, subdomain_bounds.back());
 
       const processor_id_type subdomain_id =
         cast_int<processor_id_type>
