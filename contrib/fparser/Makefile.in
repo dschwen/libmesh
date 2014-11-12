@@ -147,7 +147,8 @@ am__libdbg_la_SOURCES_DIST = fparser.cc fparser_ad.cc lib/sha1.cpp \
 	fpoptimizer/makebytecode.cc fpoptimizer/readbytecode.cc \
 	fpoptimizer/constantfolding.cc fpoptimizer/valuerange.cc \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
-	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
+	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc \
+	fpoptimizer/instantiate_for_ad.cc fpoptimizer.cc
 am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = fpoptimizer/libdbg_la-opcodename.lo \
 	fpoptimizer/libdbg_la-bytecodesynth.lo \
@@ -167,7 +168,8 @@ am__objects_1 = fpoptimizer/libdbg_la-opcodename.lo \
 	fpoptimizer/libdbg_la-rangeestimation.lo \
 	fpoptimizer/libdbg_la-transformations.lo \
 	fpoptimizer/libdbg_la-cse.lo \
-	fpoptimizer/libdbg_la-optimize_main.lo
+	fpoptimizer/libdbg_la-optimize_main.lo \
+	fpoptimizer/libdbg_la-instantiate_for_ad.lo
 @FPARSER_DEVEL_TRUE@am__objects_2 = $(am__objects_1)
 @FPARSER_DEVEL_FALSE@am__objects_3 = libdbg_la-fpoptimizer.lo
 am__objects_4 = libdbg_la-fparser.lo libdbg_la-fparser_ad.lo \
@@ -203,7 +205,8 @@ am__libdevel_la_SOURCES_DIST = fparser.cc fparser_ad.cc lib/sha1.cpp \
 	fpoptimizer/makebytecode.cc fpoptimizer/readbytecode.cc \
 	fpoptimizer/constantfolding.cc fpoptimizer/valuerange.cc \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
-	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
+	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc \
+	fpoptimizer/instantiate_for_ad.cc fpoptimizer.cc
 am__objects_5 = fpoptimizer/libdevel_la-opcodename.lo \
 	fpoptimizer/libdevel_la-bytecodesynth.lo \
 	fpoptimizer/libdevel_la-codetree.lo \
@@ -222,7 +225,8 @@ am__objects_5 = fpoptimizer/libdevel_la-opcodename.lo \
 	fpoptimizer/libdevel_la-rangeestimation.lo \
 	fpoptimizer/libdevel_la-transformations.lo \
 	fpoptimizer/libdevel_la-cse.lo \
-	fpoptimizer/libdevel_la-optimize_main.lo
+	fpoptimizer/libdevel_la-optimize_main.lo \
+	fpoptimizer/libdevel_la-instantiate_for_ad.lo
 @FPARSER_DEVEL_TRUE@am__objects_6 = $(am__objects_5)
 @FPARSER_DEVEL_FALSE@am__objects_7 = libdevel_la-fpoptimizer.lo
 am__objects_8 = libdevel_la-fparser.lo libdevel_la-fparser_ad.lo \
@@ -254,7 +258,8 @@ am__liboprof_la_SOURCES_DIST = fparser.cc fparser_ad.cc lib/sha1.cpp \
 	fpoptimizer/makebytecode.cc fpoptimizer/readbytecode.cc \
 	fpoptimizer/constantfolding.cc fpoptimizer/valuerange.cc \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
-	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
+	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc \
+	fpoptimizer/instantiate_for_ad.cc fpoptimizer.cc
 am__objects_9 = fpoptimizer/liboprof_la-opcodename.lo \
 	fpoptimizer/liboprof_la-bytecodesynth.lo \
 	fpoptimizer/liboprof_la-codetree.lo \
@@ -273,7 +278,8 @@ am__objects_9 = fpoptimizer/liboprof_la-opcodename.lo \
 	fpoptimizer/liboprof_la-rangeestimation.lo \
 	fpoptimizer/liboprof_la-transformations.lo \
 	fpoptimizer/liboprof_la-cse.lo \
-	fpoptimizer/liboprof_la-optimize_main.lo
+	fpoptimizer/liboprof_la-optimize_main.lo \
+	fpoptimizer/liboprof_la-instantiate_for_ad.lo
 @FPARSER_DEVEL_TRUE@am__objects_10 = $(am__objects_9)
 @FPARSER_DEVEL_FALSE@am__objects_11 = liboprof_la-fpoptimizer.lo
 am__objects_12 = liboprof_la-fparser.lo liboprof_la-fparser_ad.lo \
@@ -305,7 +311,8 @@ am__libopt_la_SOURCES_DIST = fparser.cc fparser_ad.cc lib/sha1.cpp \
 	fpoptimizer/makebytecode.cc fpoptimizer/readbytecode.cc \
 	fpoptimizer/constantfolding.cc fpoptimizer/valuerange.cc \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
-	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
+	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc \
+	fpoptimizer/instantiate_for_ad.cc fpoptimizer.cc
 am__objects_13 = fpoptimizer/libopt_la-opcodename.lo \
 	fpoptimizer/libopt_la-bytecodesynth.lo \
 	fpoptimizer/libopt_la-codetree.lo \
@@ -324,7 +331,8 @@ am__objects_13 = fpoptimizer/libopt_la-opcodename.lo \
 	fpoptimizer/libopt_la-rangeestimation.lo \
 	fpoptimizer/libopt_la-transformations.lo \
 	fpoptimizer/libopt_la-cse.lo \
-	fpoptimizer/libopt_la-optimize_main.lo
+	fpoptimizer/libopt_la-optimize_main.lo \
+	fpoptimizer/libopt_la-instantiate_for_ad.lo
 @FPARSER_DEVEL_TRUE@am__objects_14 = $(am__objects_13)
 @FPARSER_DEVEL_FALSE@am__objects_15 = libopt_la-fpoptimizer.lo
 am__objects_16 = libopt_la-fparser.lo libopt_la-fparser_ad.lo \
@@ -356,7 +364,8 @@ am__libprof_la_SOURCES_DIST = fparser.cc fparser_ad.cc lib/sha1.cpp \
 	fpoptimizer/makebytecode.cc fpoptimizer/readbytecode.cc \
 	fpoptimizer/constantfolding.cc fpoptimizer/valuerange.cc \
 	fpoptimizer/rangeestimation.cc fpoptimizer/transformations.cc \
-	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc fpoptimizer.cc
+	fpoptimizer/cse.cc fpoptimizer/optimize_main.cc \
+	fpoptimizer/instantiate_for_ad.cc fpoptimizer.cc
 am__objects_17 = fpoptimizer/libprof_la-opcodename.lo \
 	fpoptimizer/libprof_la-bytecodesynth.lo \
 	fpoptimizer/libprof_la-codetree.lo \
@@ -375,7 +384,8 @@ am__objects_17 = fpoptimizer/libprof_la-opcodename.lo \
 	fpoptimizer/libprof_la-rangeestimation.lo \
 	fpoptimizer/libprof_la-transformations.lo \
 	fpoptimizer/libprof_la-cse.lo \
-	fpoptimizer/libprof_la-optimize_main.lo
+	fpoptimizer/libprof_la-optimize_main.lo \
+	fpoptimizer/libprof_la-instantiate_for_ad.lo
 @FPARSER_DEVEL_TRUE@am__objects_18 = $(am__objects_17)
 @FPARSER_DEVEL_FALSE@am__objects_19 = libprof_la-fpoptimizer.lo
 am__objects_20 = libprof_la-fparser.lo libprof_la-fparser_ad.lo \
@@ -929,7 +939,8 @@ FPOPTIMIZER_CC_FILES = \
 	    fpoptimizer/rangeestimation.cc \
 	    fpoptimizer/transformations.cc \
 	    fpoptimizer/cse.cc \
-	    fpoptimizer/optimize_main.cc
+	    fpoptimizer/optimize_main.cc \
+      fpoptimizer/instantiate_for_ad.cc
 
 pkg_sources = fparser.cc fparser_ad.cc lib/sha1.cpp $(am__append_6) \
 	$(am__append_8)
@@ -1126,6 +1137,9 @@ fpoptimizer/libdbg_la-cse.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 fpoptimizer/libdbg_la-optimize_main.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libdbg_la-instantiate_for_ad.lo:  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 libdbg.la: $(libdbg_la_OBJECTS) $(libdbg_la_DEPENDENCIES) $(EXTRA_libdbg_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(libdbg_la_LINK) $(am_libdbg_la_rpath) $(libdbg_la_OBJECTS) $(libdbg_la_LIBADD) $(LIBS)
 lib/libdevel_la-sha1.lo: lib/$(am__dirstamp) \
@@ -1173,6 +1187,9 @@ fpoptimizer/libdevel_la-transformations.lo:  \
 fpoptimizer/libdevel_la-cse.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 fpoptimizer/libdevel_la-optimize_main.lo: fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libdevel_la-instantiate_for_ad.lo:  \
+	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 libdevel.la: $(libdevel_la_OBJECTS) $(libdevel_la_DEPENDENCIES) $(EXTRA_libdevel_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(libdevel_la_LINK) $(am_libdevel_la_rpath) $(libdevel_la_OBJECTS) $(libdevel_la_LIBADD) $(LIBS)
@@ -1222,6 +1239,9 @@ fpoptimizer/liboprof_la-cse.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 fpoptimizer/liboprof_la-optimize_main.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/liboprof_la-instantiate_for_ad.lo:  \
+	fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 liboprof.la: $(liboprof_la_OBJECTS) $(liboprof_la_DEPENDENCIES) $(EXTRA_liboprof_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(liboprof_la_LINK) $(am_liboprof_la_rpath) $(liboprof_la_OBJECTS) $(liboprof_la_LIBADD) $(LIBS)
 lib/libopt_la-sha1.lo: lib/$(am__dirstamp) \
@@ -1263,6 +1283,9 @@ fpoptimizer/libopt_la-transformations.lo: fpoptimizer/$(am__dirstamp) \
 fpoptimizer/libopt_la-cse.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 fpoptimizer/libopt_la-optimize_main.lo: fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libopt_la-instantiate_for_ad.lo:  \
+	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 libopt.la: $(libopt_la_OBJECTS) $(libopt_la_DEPENDENCIES) $(EXTRA_libopt_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(libopt_la_LINK) $(am_libopt_la_rpath) $(libopt_la_OBJECTS) $(libopt_la_LIBADD) $(LIBS)
@@ -1308,6 +1331,9 @@ fpoptimizer/libprof_la-transformations.lo:  \
 fpoptimizer/libprof_la-cse.lo: fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 fpoptimizer/libprof_la-optimize_main.lo: fpoptimizer/$(am__dirstamp) \
+	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
+fpoptimizer/libprof_la-instantiate_for_ad.lo:  \
+	fpoptimizer/$(am__dirstamp) \
 	fpoptimizer/$(DEPDIR)/$(am__dirstamp)
 libprof.la: $(libprof_la_OBJECTS) $(libprof_la_DEPENDENCIES) $(EXTRA_libprof_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(libprof_la_LINK) $(am_libprof_la_rpath) $(libprof_la_OBJECTS) $(libprof_la_LIBADD) $(LIBS)
@@ -1385,6 +1411,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-grammar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-grammar_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-hash.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-instantiate_for_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-makebytecode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-opcodename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdbg_la-optimize.Plo@am__quote@
@@ -1404,6 +1431,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-grammar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-grammar_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-hash.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-instantiate_for_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-makebytecode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-opcodename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libdevel_la-optimize.Plo@am__quote@
@@ -1423,6 +1451,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-grammar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-grammar_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-hash.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-instantiate_for_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-makebytecode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-opcodename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/liboprof_la-optimize.Plo@am__quote@
@@ -1442,6 +1471,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-grammar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-grammar_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-hash.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-instantiate_for_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-makebytecode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-opcodename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libopt_la-optimize.Plo@am__quote@
@@ -1461,6 +1491,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-grammar.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-grammar_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-hash.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-instantiate_for_ad.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-makebytecode.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-opcodename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@fpoptimizer/$(DEPDIR)/libprof_la-optimize.Plo@am__quote@
@@ -1662,6 +1693,13 @@ fpoptimizer/libdbg_la-optimize_main.lo: fpoptimizer/optimize_main.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libdbg_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
 
+fpoptimizer/libdbg_la-instantiate_for_ad.lo: fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libdbg_la-instantiate_for_ad.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libdbg_la-instantiate_for_ad.Tpo -c -o fpoptimizer/libdbg_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libdbg_la-instantiate_for_ad.Tpo fpoptimizer/$(DEPDIR)/libdbg_la-instantiate_for_ad.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/instantiate_for_ad.cc' object='fpoptimizer/libdbg_la-instantiate_for_ad.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libdbg_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+
 libdbg_la-fpoptimizer.lo: fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdbg_la_CPPFLAGS) $(CPPFLAGS) $(libdbg_la_CXXFLAGS) $(CXXFLAGS) -MT libdbg_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/libdbg_la-fpoptimizer.Tpo -c -o libdbg_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libdbg_la-fpoptimizer.Tpo $(DEPDIR)/libdbg_la-fpoptimizer.Plo
@@ -1822,6 +1860,13 @@ fpoptimizer/libdevel_la-optimize_main.lo: fpoptimizer/optimize_main.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_main.cc' object='fpoptimizer/libdevel_la-optimize_main.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libdevel_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
+
+fpoptimizer/libdevel_la-instantiate_for_ad.lo: fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libdevel_la-instantiate_for_ad.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libdevel_la-instantiate_for_ad.Tpo -c -o fpoptimizer/libdevel_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libdevel_la-instantiate_for_ad.Tpo fpoptimizer/$(DEPDIR)/libdevel_la-instantiate_for_ad.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/instantiate_for_ad.cc' object='fpoptimizer/libdevel_la-instantiate_for_ad.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libdevel_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
 
 libdevel_la-fpoptimizer.lo: fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libdevel_la_CPPFLAGS) $(CPPFLAGS) $(libdevel_la_CXXFLAGS) $(CXXFLAGS) -MT libdevel_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/libdevel_la-fpoptimizer.Tpo -c -o libdevel_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
@@ -1984,6 +2029,13 @@ fpoptimizer/liboprof_la-optimize_main.lo: fpoptimizer/optimize_main.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/liboprof_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
 
+fpoptimizer/liboprof_la-instantiate_for_ad.lo: fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/liboprof_la-instantiate_for_ad.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/liboprof_la-instantiate_for_ad.Tpo -c -o fpoptimizer/liboprof_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/liboprof_la-instantiate_for_ad.Tpo fpoptimizer/$(DEPDIR)/liboprof_la-instantiate_for_ad.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/instantiate_for_ad.cc' object='fpoptimizer/liboprof_la-instantiate_for_ad.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/liboprof_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+
 liboprof_la-fpoptimizer.lo: fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(liboprof_la_CPPFLAGS) $(CPPFLAGS) $(liboprof_la_CXXFLAGS) $(CXXFLAGS) -MT liboprof_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/liboprof_la-fpoptimizer.Tpo -c -o liboprof_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/liboprof_la-fpoptimizer.Tpo $(DEPDIR)/liboprof_la-fpoptimizer.Plo
@@ -2145,6 +2197,13 @@ fpoptimizer/libopt_la-optimize_main.lo: fpoptimizer/optimize_main.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libopt_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
 
+fpoptimizer/libopt_la-instantiate_for_ad.lo: fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libopt_la-instantiate_for_ad.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libopt_la-instantiate_for_ad.Tpo -c -o fpoptimizer/libopt_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libopt_la-instantiate_for_ad.Tpo fpoptimizer/$(DEPDIR)/libopt_la-instantiate_for_ad.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/instantiate_for_ad.cc' object='fpoptimizer/libopt_la-instantiate_for_ad.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libopt_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+
 libopt_la-fpoptimizer.lo: fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libopt_la_CPPFLAGS) $(CPPFLAGS) $(libopt_la_CXXFLAGS) $(CXXFLAGS) -MT libopt_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/libopt_la-fpoptimizer.Tpo -c -o libopt_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libopt_la-fpoptimizer.Tpo $(DEPDIR)/libopt_la-fpoptimizer.Plo
@@ -2305,6 +2364,13 @@ fpoptimizer/libprof_la-optimize_main.lo: fpoptimizer/optimize_main.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/optimize_main.cc' object='fpoptimizer/libprof_la-optimize_main.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libprof_la-optimize_main.lo `test -f 'fpoptimizer/optimize_main.cc' || echo '$(srcdir)/'`fpoptimizer/optimize_main.cc
+
+fpoptimizer/libprof_la-instantiate_for_ad.lo: fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CXXFLAGS) $(CXXFLAGS) -MT fpoptimizer/libprof_la-instantiate_for_ad.lo -MD -MP -MF fpoptimizer/$(DEPDIR)/libprof_la-instantiate_for_ad.Tpo -c -o fpoptimizer/libprof_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) fpoptimizer/$(DEPDIR)/libprof_la-instantiate_for_ad.Tpo fpoptimizer/$(DEPDIR)/libprof_la-instantiate_for_ad.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='fpoptimizer/instantiate_for_ad.cc' object='fpoptimizer/libprof_la-instantiate_for_ad.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CXXFLAGS) $(CXXFLAGS) -c -o fpoptimizer/libprof_la-instantiate_for_ad.lo `test -f 'fpoptimizer/instantiate_for_ad.cc' || echo '$(srcdir)/'`fpoptimizer/instantiate_for_ad.cc
 
 libprof_la-fpoptimizer.lo: fpoptimizer.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libprof_la_CPPFLAGS) $(CPPFLAGS) $(libprof_la_CXXFLAGS) $(CXXFLAGS) -MT libprof_la-fpoptimizer.lo -MD -MP -MF $(DEPDIR)/libprof_la-fpoptimizer.Tpo -c -o libprof_la-fpoptimizer.lo `test -f 'fpoptimizer.cc' || echo '$(srcdir)/'`fpoptimizer.cc
