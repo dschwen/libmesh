@@ -8,10 +8,6 @@ FEATURE_FLAGS += -DFP_ENABLE_EVAL
 # some systems have trouble with the fparser optimizer
 if FPARSER_NO_SUPPORT_OPTIMIZER
   FEATURE_FLAGS += -DFP_DUMMY_OPTIMIZER
-else
-if FPARSER_SUPPORT_DEBUGGING
-    FEATURE_FLAGS += -DFUNCTIONPARSER_SUPPORT_DEBUGGING
-endif
 endif
 
 #FEATURE_FLAGS += -DFP_USE_THREAD_SAFE_EVAL
@@ -28,6 +24,10 @@ FEATURE_FLAGS += -DFP_SUPPORT_COMPLEX_DOUBLE_TYPE
 FEATURE_FLAGS += -DFP_SUPPORT_COMPLEX_FLOAT_TYPE
 FEATURE_FLAGS += -DFP_SUPPORT_COMPLEX_LONG_DOUBLE_TYPE
 #FEATURE_FLAGS += -DFP_USE_STRTOLD
+
+if FPARSER_SUPPORT_DEBUGGING
+  FEATURE_FLAGS += -DFUNCTIONPARSER_SUPPORT_DEBUGGING
+endif
 
 # Wrap code that uses std::move in fparser for compilers that don't support it
 if HAVE_CXX11_MOVE
@@ -104,11 +104,8 @@ EXTRA_DIST += $(FPOPTIMIZER_CC_FILES) fpoptimizer/fpoptimizer_header.txt fpoptim
 
 
 
-pkg_sources = fparser.cc fparser_ad.cc
-if FPARSER_SUPPORT_JIT
-  pkg_sources += lib/sha1.cpp
-  pkg_cppflags += -DFPARSER_JIT_COMPILER="\"$(CXX)\""
-endif
+pkg_sources = fparser.cc fparser_ad.cc lib/sha1.cpp
+pkg_cppflags += -DFPARSER_JIT_COMPILER="\"$(CXX)\""
 
 pkg_cppflags += $(FEATURE_FLAGS)
 
@@ -126,6 +123,8 @@ util_tree_grammar_parser_SOURCES   = \
                                  fparser_mpfr.hh \
                                  fparser.hh \
 			 	 fparser.cc \
+                                 fparser_ad.hh \
+			 	 fparser_ad.cc \
                                  fpoptimizer/logic_comparisons.hh \
                                  fpoptimizer/constantfolding.hh \
                                  fpoptimizer/logic_ifoperations.hh \
@@ -203,11 +202,7 @@ if FPARSER_DEVEL
   noinst_PROGRAMS           += util/cpp_compress
   # noinst_PROGRAMS           += util/make_function_name_parser
 
-if FPARSER_SUPPORT_OPTIMIZER
-    pkg_sources += $(FPOPTIMIZER_CC_FILES)
-else
-    pkg_sources += fpoptimizer.cc
-endif
+  pkg_sources += $(FPOPTIMIZER_CC_FILES)
 
    # when doing 'make clean' we need to remove the generated sources
   CLEANFILES += $(BUILT_SOURCES)
