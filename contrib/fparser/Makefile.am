@@ -98,7 +98,8 @@ FPOPTIMIZER_CC_FILES=\
 	    fpoptimizer/rangeestimation.cc \
 	    fpoptimizer/transformations.cc \
 	    fpoptimizer/cse.cc \
-	    fpoptimizer/optimize_main.cc
+	    fpoptimizer/optimize_main.cc \
+      fpoptimizer/instantiate_for_ad.cc
 
 EXTRA_DIST += $(FPOPTIMIZER_CC_FILES) fpoptimizer/fpoptimizer_header.txt fpoptimizer/fpoptimizer_footer.txt
 

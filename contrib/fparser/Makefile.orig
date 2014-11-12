@@ -85,7 +85,7 @@ endif
 
 FEATURE_FLAGS += -DFUNCTIONPARSER_SUPPORT_DEBUGGING
 
-#LD +=  -fprofile -fprofile-values -fprofile-generate -ftest-coverage 
+#LD +=  -fprofile -fprofile-values -fprofile-generate -ftest-coverage
 
 # Try to guess the location of an installed libmesh, taking it from the
 # environment if it exists.
@@ -260,7 +260,8 @@ FPOPTIMIZER_CC_FILES=\
 	    fpoptimizer/rangeestimation.cc \
 	    fpoptimizer/transformations.cc \
 	    fpoptimizer/cse.cc \
-	    fpoptimizer/optimize_main.cc
+	    fpoptimizer/optimize_main.cc \
+      fpoptimizer/instantiate_for_ad.cc
 
 fpoptimizer.cc: fpoptimizer/fpoptimizer_header.txt \
 		fpoptimizer/fpoptimizer_footer.txt \
