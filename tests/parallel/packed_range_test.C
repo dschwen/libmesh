@@ -101,6 +101,7 @@ class PackedRangeTest : public CppUnit::TestCase {
 public:
   CPPUNIT_TEST_SUITE( PackedRangeTest );
 
+  CPPUNIT_TEST( testPackRange );
   CPPUNIT_TEST( testNullAllGather );
   CPPUNIT_TEST( testNullSendReceive );
   CPPUNIT_TEST( testContainerSendReceive );
@@ -120,10 +121,29 @@ public:
 
 
 
+  void testPackRange()
+  {
+    std::vector<Parallel::Packing<std::string>::buffer_type> buffer;
+    std::vector<std::string> send(1);
+
+    send[0].assign(200,'*');
+    Parallel::pack_range((void *)(NULL), 
+       send.begin(), send.end(),
+       buffer, 1000);
+
+    CPPUNIT_ASSERT_EQUAL(std::size_t(204), buffer.size());
+
+    send[0].assign(2000,'*');
+    Parallel::pack_range((void *)(NULL), 
+       send.begin(), send.end(),
+       buffer, 1000);
+
+    CPPUNIT_ASSERT_EQUAL(std::size_t(2), buffer.size());
+  }
+
+
   void testNullAllGather()
   {
-    std::vector<processor_id_type> vals;
-
     std::vector<std::string> send(1);
     if (TestCommWorld->rank() == 0)
       send[0].assign("Hello");
@@ -138,8 +158,6 @@ public:
 
   void testNullSendReceive()
   {
-    std::vector<processor_id_type> vals;
-
     std::vector<std::string> send(1);
     const unsigned int my_rank = TestCommWorld->rank();
     const unsigned int dest_rank =
@@ -163,8 +181,6 @@ public:
 
   void testContainerSendReceive()
   {
-    std::vector<processor_id_type> vals;
-
     std::vector<std::string> send(1), recv;
 
     const unsigned int my_rank = TestCommWorld->rank();
@@ -185,7 +201,7 @@ public:
        std::back_inserter(recv),
        (std::string*)NULL);
 
-    CPPUNIT_ASSERT_EQUAL(recv.size(), std::size_t(1));
+    CPPUNIT_ASSERT_EQUAL(std::size_t(1), recv.size());
 
     std::string check;
     {
