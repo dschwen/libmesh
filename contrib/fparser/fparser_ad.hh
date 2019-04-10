@@ -165,6 +165,9 @@ private:
   friend class ADImplementation<Value_t>;
 
   // Exceptions
+  class NotImplemented : public std::exception {
+    virtual const char* what() const throw() { return "Operation not implemented"; }
+  } NotImplementedException;
   class UnknownVariable : public std::exception {
     virtual const char* what() const throw() { return "Unknown variable"; }
   } UnknownVariableException;

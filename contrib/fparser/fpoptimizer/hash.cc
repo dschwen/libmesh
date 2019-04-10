@@ -41,6 +41,20 @@ namespace
 
 namespace FPoptimizer_CodeTree
 {
+    // helper functions with specializations
+    template<typename Value_t>
+    void fp_frexp(const Value_t, int & exponent)
+    {
+        return std::frexp(Value, &exponent);
+    }
+#ifdef LIBMESH_HAVE_METAPHYSICL
+    template<>
+    void fp_frexp(const DualReal, int & exponent)
+    {
+        return std::frexp(MetaPhysicL::raw_value(Value), &exponent);
+    }
+#endif
+
     template<typename Value_t>
     void CodeTree<Value_t>::Sort()
     {
@@ -93,7 +107,7 @@ namespace FPoptimizer_CodeTree
             fphash_value_t key = data.buf1.key;
           #else
             int exponent;
-            Value_t fraction = std::frexp(Value, &exponent);
+            Value_t fraction = fp_frexp(Value, &exponent);
             fphash_value_t key = (unsigned(exponent+0x8000) & 0xFFFF);
             if(fraction < 0)
                 { fraction = -fraction; key = key^0xFFFF; }

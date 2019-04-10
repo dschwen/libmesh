@@ -76,6 +76,11 @@
 #define FP_SUPPORT_COMPLEX_NUMBERS
 #endif
 
+#ifdef LIBMESH_HAVE_METAPHYSICL
+#include "libmesh/libmesh_common.h"
+#include "metaphysicl/numberarray.h"
+#include "metaphysicl/dualnumber.h"
+#endif
 
 /*
  No member function of FunctionParser is thread-safe. Most prominently,

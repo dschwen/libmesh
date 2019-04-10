@@ -621,11 +621,11 @@ namespace
 
         if(endptr) *endptr = const_cast<char*> (str);
 
-        Value_t result = std::ldexp(Value_t(mantissa_buffer[0]), exponent);
+        Value_t result = Value_t(mantissa_buffer[0]) * std::pow(2.0, exponent);
         for(unsigned p=1; p<n_limbs; ++p)
         {
             exponent += limb_bits;
-            result += ldexp(Value_t(mantissa_buffer[p]), exponent);
+            result += Value_t(mantissa_buffer[p]) * std::pow(2.0, exponent);
         }
         return result;
     }
@@ -3838,6 +3838,10 @@ void FunctionParserBase<Value_t>::Optimize()
 
 #ifndef FP_DISABLE_DOUBLE_TYPE
 FUNCTIONPARSER_INSTANTIATE_CLASS(double)
+#endif
+
+#ifdef LIBMESH_HAVE_METAPHYSICL
+FUNCTIONPARSER_INSTANTIATE_CLASS(DualReal)
 #endif
 
 #ifdef FP_SUPPORT_FLOAT_TYPE

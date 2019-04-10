@@ -465,6 +465,12 @@ namespace FUNCTIONPARSERTYPES
     inline void fp_sinhCosh(GmpInt&, GmpInt&, const GmpInt&) {}
 #endif // FP_SUPPORT_GMP_INT_TYPE
 
+// -------------------------------------------------------------------------
+// MetaPhysicL dual numbers
+// -------------------------------------------------------------------------
+#ifdef LIBMESH_HAVE_METAPHYSICL
+inline long int fp_int(const DualReal & x) { return MetaPhysicL::raw_value(x); }
+#endif // LIBMESH_HAVE_METAPHYSICL
 
 #ifdef FP_SUPPORT_CPLUSPLUS11_MATH_FUNCS
     template<typename Value_t>

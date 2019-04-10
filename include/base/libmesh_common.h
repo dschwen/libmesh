@@ -77,6 +77,8 @@
 // compatibility, although we no longer use it in the library.
 #include "libmesh/libmesh_nullptr.h"
 
+//
+
 namespace libMesh
 {
 
@@ -584,6 +586,25 @@ inline Tnew libmesh_cast_int (Told oldvar)
 
 } // namespace libMesh
 
+// Define the default dual number variant of Real
+
+#ifdef LIBMESH_HAVE_METAPHYSICL
+namespace MetaPhysicL
+{
+template <typename, typename>
+class DualNumber;
+template <std::size_t, typename>
+class NumberArray;
+}
+
+using libMesh::Real;
+using MetaPhysicL::DualNumber;
+using MetaPhysicL::NumberArray;
+
+#define AD_MAX_DOFS_PER_ELEM 50
+
+typedef DualNumber<Real, NumberArray<AD_MAX_DOFS_PER_ELEM, Real>> DualReal;
+#endif
 
 // Backwards compatibility
 namespace libMeshEnums

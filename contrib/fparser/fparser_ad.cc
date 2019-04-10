@@ -1,9 +1,9 @@
+#include "fpconfig.hh"
 #include "fparser_ad.hh"
 #include "extrasrc/fpaux.hh"
 #include "extrasrc/fptypes.hh"
 #include "extrasrc/fpaux.hh"
 #include <stdlib.h>
-#include "Faddeeva.hh"
 
 using namespace FUNCTIONPARSERTYPES;
 
@@ -118,28 +118,20 @@ Value_t FunctionParserADBase<Value_t>::fp_plog(const Value_t * params)
 template <typename Value_t>
 Value_t FunctionParserADBase<Value_t>::fp_erf(const Value_t * params)
 {
-  return Faddeeva::erf(params[0]);
+  return std::erf(params[0]);
 }
 
-template<>
-std::complex<float>
-FunctionParserADBase<std::complex<float> >::fp_erf(const std::complex<float> * params)
-{
-  std::complex<double> result =
-    Faddeeva::erf(std::complex<double>(params[0].real(),
-                                       params[0].imag()));
-  return std::complex<float>(result.real(), result.imag());
+#define SPECIALIZE_COMPLEX_ERF(T) \
+template<> \
+std::complex<T> \
+FunctionParserADBase<std::complex<T> >::fp_erf(const std::complex<T> *) \
+{ \
+  return std::complex<T>(std::numeric_limits<T>::signaling_NaN(), std::numeric_limits<T>::signaling_NaN()); \
 }
 
-template<>
-std::complex<long double>
-FunctionParserADBase<std::complex<long double> >::fp_erf(const std::complex<long double> * params)
-{
-  std::complex<double> result =
-    Faddeeva::erf(std::complex<double>(params[0].real(),
-                                       params[0].imag()));
-  return std::complex<long double>(result.real(), result.imag());
-}
+SPECIALIZE_COMPLEX_ERF(float)
+SPECIALIZE_COMPLEX_ERF(double)
+SPECIALIZE_COMPLEX_ERF(long double)
 
 template<typename Value_t>
 FunctionParserADBase<Value_t>::~FunctionParserADBase()
@@ -1133,6 +1125,10 @@ void FunctionParserADBase<Value_t>::Unserialize(std::istream & istr)
 
 #ifndef FP_DISABLE_DOUBLE_TYPE
 FUNCTIONPARSERAD_INSTANTIATE_CLASS(double)
+#endif
+
+#ifdef LIBMESH_HAVE_METAPHYSICL
+FUNCTIONPARSERAD_INSTANTIATE_CLASS(DualReal)
 #endif
 
 #ifdef FP_SUPPORT_FLOAT_TYPE
