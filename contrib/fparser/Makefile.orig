@@ -92,7 +92,7 @@ FEATURE_FLAGS += -DFUNCTIONPARSER_SUPPORT_DEBUGGING
 LIBMESH_DIR ?= ../../installed
 
 CPPFLAGS=$(FEATURE_FLAGS) -I$(LIBMESH_DIR)/include/libmesh
-CXXFLAGS=-Wall -W -pedantic -ansi $(OPTIMIZATION)
+CXXFLAGS=-Wall -W -pedantic -std=c++11 $(OPTIMIZATION)
 #CXXFLAGS += -Wunreachable-code
 #CXXFLAGS += -std=c++0x
 

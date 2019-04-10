@@ -698,7 +698,7 @@ namespace FPoptimizer_Grammar
 
     extern "C" {
         extern const Rule      grammar_rules[];
-        /*
+        /* 
         extern const Grammar   grammar_optimize_round1;
         extern const Grammar   grammar_optimize_round2;
         extern const Grammar   grammar_optimize_round3;
@@ -2130,7 +2130,7 @@ namespace FPoptimizer_ByteCode
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_ByteCode
 {
@@ -4770,7 +4770,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -4924,7 +4924,7 @@ namespace FPoptimizer_CodeTree
 #endif
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -5084,7 +5084,7 @@ namespace FPoptimizer_Grammar
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 #include <complex>
 namespace FPoptimizer_Grammar
@@ -5104,7 +5104,7 @@ namespace FPoptimizer_Grammar
 // line removed for fpoptimizer.cc: #include "extrasrc/fptypes.hh"
 #include <algorithm>
 
-/*
+/* 
 #define grammar_optimize_abslogical grammar_optimize_abslogical_tweak
 #define grammar_optimize_ignore_if_sideeffects grammar_optimize_ignore_if_sideeffects_tweak
 #define grammar_optimize_nonshortcut_logical_evaluation grammar_optimize_nonshortcut_logical_evaluation_tweak
@@ -6685,7 +6685,7 @@ namespace FPoptimizer_Grammar
         return ParamSpec(ParamHolder,(const void*)&plist_p[index]);
     }
 }
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_Grammar
 {
@@ -7133,7 +7133,7 @@ namespace FPoptimizer_Optimize
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_Optimize
 {
@@ -7891,7 +7891,7 @@ namespace FPoptimizer_Optimize
 }
 
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_Optimize
 {
@@ -8038,7 +8038,7 @@ namespace FPoptimizer_Optimize
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_Optimize
 {
@@ -8135,7 +8135,7 @@ namespace FPoptimizer_Grammar
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_Grammar
 {
@@ -8196,6 +8196,20 @@ namespace
 
 namespace FPoptimizer_CodeTree
 {
+    // helper functions with specializations
+    template<typename Value_t>
+    void fp_frexp(const Value_t, int & exponent)
+    {
+        return std::frexp(Value, &exponent);
+    }
+#ifdef LIBMESH_HAVE_METAPHYSICL
+    template<>
+    void fp_frexp(const DualReal, int & exponent)
+    {
+        return std::frexp(MetaPhysicL::raw_value(Value), &exponent);
+    }
+#endif
+
     template<typename Value_t>
     void CodeTree<Value_t>::Sort()
     {
@@ -8248,7 +8262,7 @@ namespace FPoptimizer_CodeTree
             fphash_value_t key = data.buf1.key;
           #else
             int exponent;
-            Value_t fraction = std::frexp(Value, &exponent);
+            Value_t fraction = fp_frexp(Value, &exponent);
             fphash_value_t key = (unsigned(exponent+0x8000) & 0xFFFF);
             if(fraction < 0)
                 { fraction = -fraction; key = key^0xFFFF; }
@@ -8392,7 +8406,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -8878,7 +8892,7 @@ namespace
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -9647,7 +9661,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -10593,7 +10607,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -10687,7 +10701,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -11664,7 +11678,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -12637,7 +12651,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -13139,7 +13153,7 @@ namespace FPoptimizer_CodeTree
     }
 }
 
-/*
+/* 
 // line removed for fpoptimizer.cc: #include "instantiate.hh"
 namespace FPoptimizer_CodeTree
 {
@@ -13242,10 +13256,6 @@ FUNCTIONPARSER_INSTANTIATE_EMPTY_OPTIMIZE(std::complex<long double>)
 FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(double)
 #endif
 
-#ifdef LIBMESH_HAVE_METAPHYSICL
-FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(DualReal)
-#endif
-
 #ifdef FP_SUPPORT_FLOAT_TYPE
 FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(float)
 #endif
@@ -13256,6 +13266,10 @@ FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(long double)
 
 #ifdef FP_SUPPORT_LONG_INT_TYPE
 FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(long)
+#endif
+
+#ifdef LIBMESH_HAVE_METAPHYSICL
+FUNCTIONPARSER_INSTANTIATE_OPTIMIZE(DualReal)
 #endif
 
 #endif //FP_DUMMY_OPTIMIZER
