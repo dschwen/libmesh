@@ -152,9 +152,39 @@ bool FunctionParserADBase<Value_t>::AddVariable(const std::string & var_name)
 {
   this->CopyOnWrite();
 
+  // get the beginning of the current variables string
+  auto oldBegin = this->mData->mVariablesString.begin();
+
   // append new variable to variables string
   const std::string & vars = this->mData->mVariablesString;
-  return this->ParseVariables(vars == "" ? var_name : vars + "," + var_name);
+  this->mData->mVariablesString = vars == "" ? var_name : vars + "," + var_name;
+
+  // get the beginning of the new variables string
+  auto newBegin = this->mData->mVariablesString.begin();
+
+  // fix all current variable name pointers to point to the new string
+  for(typename NamePtrsMap<Value_t>::iterator i =
+          this->mData->mNamePtrs.begin();
+      i != this->mData->mNamePtrs.end(); ++i)
+  {
+    if(i->second.type == NameData<Value_t>::VARIABLE)
+      // shift pointer to new string and make sure we don't get an underflow
+      i->first.name = (i->first.name + newBegin) - oldBegin;
+  }
+
+  // create name object for the new name
+  auto nameLength = var_name.length();
+  auto beginPtr = this->mData->mVariablesString.end() - nameLength;
+  std::pair<NamePtr, NameData<Value_t> > newName
+      (NamePtr(beginPtr, nameLength),
+       NameData<Value_t>(NameData<Value_t>::VARIABLE, this->mData->mVariablesAmount + VarBegin));
+
+  // add name object
+  if(!addNewNameData(this->mData->mNamePtrs, newName, true))
+    return false;
+
+  // increase variable count
+  this->mData->mVariablesAmount++;
 }
 
 template<typename Value_t>
