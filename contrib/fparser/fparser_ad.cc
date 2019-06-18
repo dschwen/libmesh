@@ -152,15 +152,15 @@ bool FunctionParserADBase<Value_t>::AddVariable(const std::string & var_name)
 {
   this->CopyOnWrite();
 
+  // new name pointer map
+  NamePtrsMap<Value_t> newMap;
+
   // get the beginning of the current variables string
-  auto oldBegin = this->mData->mVariablesString.begin();
+  auto oldBegin = this->mData->mVariablesString.c_str();
 
   // append new variable to variables string
   const std::string & vars = this->mData->mVariablesString;
   this->mData->mVariablesString = vars == "" ? var_name : vars + "," + var_name;
-
-  // get the beginning of the new variables string
-  auto newBegin = this->mData->mVariablesString.begin();
 
   // fix all current variable name pointers to point to the new string
   for(typename NamePtrsMap<Value_t>::iterator i =
@@ -168,23 +168,37 @@ bool FunctionParserADBase<Value_t>::AddVariable(const std::string & var_name)
       i != this->mData->mNamePtrs.end(); ++i)
   {
     if(i->second.type == NameData<Value_t>::VARIABLE)
-      // shift pointer to new string and make sure we don't get an underflow
-      i->first.name = (i->first.name + newBegin) - oldBegin;
+    {
+      const std::size_t variableStringOffset =
+          i->first.name - oldBegin;
+      std::pair<NamePtr, NameData<Value_t> > tmp
+          (NamePtr(&this->mData->mVariablesString[variableStringOffset],
+                   i->first.nameLength),
+           i->second);
+      newMap.insert(newMap.end(), tmp);
+    }
+    else
+      newMap.insert(newMap.end(), *i);
   }
 
   // create name object for the new name
   auto nameLength = var_name.length();
-  auto beginPtr = this->mData->mVariablesString.end() - nameLength;
+  const char * beginPtr =
+      &this->mData->mVariablesString[this->mData->mVariablesString.length() - nameLength];
   std::pair<NamePtr, NameData<Value_t> > newName
       (NamePtr(beginPtr, nameLength),
        NameData<Value_t>(NameData<Value_t>::VARIABLE, this->mData->mVariablesAmount + VarBegin));
 
   // add name object
-  if(!addNewNameData(this->mData->mNamePtrs, newName, true))
-    return false;
+  newMap.insert(newName);
 
   // increase variable count
   this->mData->mVariablesAmount++;
+
+  // swap in new map for old map
+  this->mData->mNamePtrs.swap(newMap);
+
+  return true;
 }
 
 template<typename Value_t>
