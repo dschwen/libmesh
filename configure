@@ -38581,18 +38581,6 @@ else
 fi
 
 
-      if test "x$petsc_have_metis" != "x" && test $petsc_have_metis -gt 0; then :
-  build_metis=no
-fi
-
-            if test "$enablemetis" = "yes" && test "$build_metis" = "no"; then :
-
-          if test "x$petsc_have_metis" = "x0" || test "$enablepetsc" = "no"; then :
-  build_metis=yes
-fi
-
-fi
-
       if test "$enablemetis" = "yes"; then :
 
                     if test "$build_metis" = "yes"; then :

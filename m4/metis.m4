@@ -21,22 +21,6 @@ AC_DEFUN([CONFIGURE_METIS],
                       [AC_MSG_ERROR(bad value ${withval} for --with-metis)])],
              [build_metis=yes])
 
-  dnl If PETSc has its own METIS, default to using that one regardless
-  dnl of what the user specified (if anything) in --with-metis.
-  AS_IF([test "x$petsc_have_metis" != "x" && test $petsc_have_metis -gt 0],
-        [build_metis=no])
-
-  dnl Conversely, if:
-  dnl .) METIS is enabled in libmesh,
-  dnl .) PETSc does not have a METIS or we aren't using PETSc, and
-  dnl .) build_metis=no because user said --with-metis=PETSc,
-  dnl then we need to make sure that libmesh builds its own METIS!
-  AS_IF([test "$enablemetis" = "yes" && test "$build_metis" = "no"],
-        [
-          AS_IF([test "x$petsc_have_metis" = "x0" || test "$enablepetsc" = "no"],
-                [build_metis=yes])
-        ])
-
   dnl The METIS API is distributed with libmesh, so we don't have to guess
   dnl where it might be installed...
   AS_IF([test "$enablemetis" = "yes"],
