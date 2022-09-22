@@ -21,6 +21,7 @@
 #define LIBMESH_SYSTEM_H
 
 // Local Includes
+#include "libmesh/dof_map.h"
 #include "libmesh/elem_range.h"
 #include "libmesh/enum_subset_solve_mode.h" // SUBSET_ZERO
 #include "libmesh/enum_parallel_type.h" // PARALLEL

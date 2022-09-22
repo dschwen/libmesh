@@ -28,6 +28,7 @@
 // Local Includes
 #include "libmesh/system.h"
 #include "libmesh/eigen_solver.h"
+#include "libmesh/shell_matrix.h"
 
 namespace libMesh
 {

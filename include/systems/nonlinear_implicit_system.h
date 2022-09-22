@@ -22,6 +22,8 @@
 
 // Local Includes
 #include "libmesh/implicit_system.h"
+#include "libmesh/nonlinear_solver.h"
+#include "libmesh/diff_solver.h"
 
 // C++ includes
 
